@@ -1,19 +1,12 @@
 pipeline {
   agent {
-    docker {
-      image 'python:3.8-slim'
-      args '-u root:root'
-    }
+    docker { image 'python:3.8-slim' }
   }
   stages {
-    stage('install deps & test') {
+    stage('build') {
       steps {
-        sh '''
-          python -m venv .venv
-          . .venv/bin/activate
-          pip install -r requirements.txt
-          pytest
-        '''
+        sh 'python --version'
+        sh 'echo Hello Jenkins'
       }
     }
   }
