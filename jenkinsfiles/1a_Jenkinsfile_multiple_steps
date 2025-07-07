@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "This is First Jenkins Pipeline"'
+                sh '''
+                    echo "This is step script"
+                    ls -ltr
+                    cd /var/lib/jenkins/workspace
+                    ls -ltr
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'This is Test Stage.'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'This is Deploy Stage.'
+            }
+        }
+    }
+}
